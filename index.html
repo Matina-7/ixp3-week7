@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WINDOW - Surveillance System</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- System Header -->
+    <div id="system-header">
+        <div class="system-title">SURVEILLANCE MONITORING SYSTEM v2.4</div>
+        <div class="system-time" id="currentTime"></div>
+        <div class="system-status">
+            <span class="status-indicator active"></span>
+            <span id="statusText">ONLINE</span>
+        </div>
+    </div>
+
+    <!-- Main Grid Container -->
+    <div id="grid-container">
+        <!-- Camera Feed 1 -->
+        <div class="camera-feed" id="feed1">
+            <div class="camera-label">CAM-01 // HALLWAY</div>
+            <div class="feed-content">
+                <div class="static-overlay"></div>
+                <div class="camera-scene scene-1"></div>
+            </div>
+            <div class="timestamp" id="time1"></div>
+        </div>
+
+        <!-- Camera Feed 2 -->
+        <div class="camera-feed" id="feed2">
+            <div class="camera-label">CAM-02 // ENTRANCE</div>
+            <div class="feed-content">
+                <div class="static-overlay"></div>
+                <div class="camera-scene scene-2"></div>
+            </div>
+            <div class="timestamp" id="time2"></div>
+        </div>
+
+        <!-- Camera Feed 3 -->
+        <div class="camera-feed" id="feed3">
+            <div class="camera-label">CAM-03 // OFFICE</div>
+            <div class="feed-content">
+                <div class="static-overlay"></div>
+                <div class="camera-scene scene-3"></div>
+            </div>
+            <div class="timestamp" id="time3"></div>
+        </div>
+
+        <!-- Camera Feed 4 (Will become user's camera) -->
+        <div class="camera-feed" id="feed4">
+            <div class="camera-label">CAM-04 // BACKUP</div>
+            <div class="feed-content">
+                <div class="static-overlay"></div>
+                <div class="camera-scene scene-4"></div>
+                <video id="userCamera" autoplay playsinline></video>
+            </div>
+            <div class="timestamp" id="time4"></div>
+        </div>
+    </div>
+
+    <!-- Narrative Text Overlay -->
+    <div id="narrative-overlay">
+        <div id="narrative-text"></div>
+    </div>
+
+    <!-- Glitch Overlay for System Invasion -->
+    <div id="glitch-overlay"></div>
+
+    <!-- Warning Messages -->
+    <div id="warning-container"></div>
+
+    <!-- System Invasion Terminal -->
+    <div id="terminal-overlay">
+        <div class="terminal-header">
+            <span class="terminal-title">SYSTEM TERMINAL</span>
+            <span class="terminal-close" onclick="closeTerminal()">×</span>
+        </div>
+        <div id="terminal-content"></div>
+    </div>
+
+    <!-- Final Message -->
+    <div id="final-message">
+        <h1>WHO IS WATCHING WHOM?</h1>
+        <p>You thought you were the observer.</p>
+        <p>But you were always the observed.</p>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
