@@ -1,4 +1,20 @@
-// Global State
+/**
+ * WINDOW - Interactive Narrative Experience
+ * Main Application Entry Point
+ *
+ * This file orchestrates all scenes and manages the overall narrative flow.
+ */
+
+// ============================================================================
+// Import Scene Modules
+// ============================================================================
+
+import { scene1_init } from '../scripts/scene1.js';
+
+// ============================================================================
+// Global Application State
+// ============================================================================
+
 let currentStage = 0;
 let cameraActive = false;
 let invasionStarted = false;
@@ -83,12 +99,29 @@ const terminalMessages = [
     { text: "INITIATING SYSTEM COLLAPSE...", type: "error", delay: 11000 }
 ];
 
-// Initialize
+// ============================================================================
+// Application Initialization
+// ============================================================================
+
+/**
+ * Initialize the application
+ * Entry point for the entire WINDOW experience
+ */
 function init() {
+    console.log('='.repeat(70));
+    console.log('WINDOW - Interactive Narrative Experience');
+    console.log('Initializing...');
+    console.log('='.repeat(70));
+
+    // Initialize Scene 1: The Watcher's Entrance
+    scene1_init();
+
+    // Update system time display
     updateTime();
     setInterval(updateTime, 1000);
 
-    // Start narrative progression
+    // TODO: Future scenes will be initialized here
+    // Start narrative progression for later scenes
     narrativeStages.forEach(stage => {
         setTimeout(() => {
             showNarrative(stage.text, stage.duration);
@@ -98,10 +131,12 @@ function init() {
         }, stage.delay);
     });
 
-    // Trigger final collapse
+    // Trigger final collapse (for later scenes)
     setTimeout(() => {
         systemCollapse();
     }, 55000);
+
+    console.log('[Main] Application initialized successfully');
 }
 
 // Update Time Display
@@ -302,8 +337,16 @@ function generateFakeIP() {
            Math.floor(Math.random() * 255);
 }
 
-// Start on page load
+// ============================================================================
+// Start Application on Page Load
+// ============================================================================
+
 window.addEventListener('load', init);
+
+// Also support window.onload for compatibility
+window.onload = init;
+
+console.log('[Main] main.js module loaded');
 
 // Prevent closing terminal during invasion
 document.addEventListener('keydown', (e) => {
