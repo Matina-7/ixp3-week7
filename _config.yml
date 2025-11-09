@@ -1,0 +1,55 @@
+# WINDOW - Interactive Narrative Experience
+# Jekyll Configuration for GitHub Pages
+
+# Site settings
+title: "WINDOW - Surveillance System"
+description: "Interactive narrative experience exploring surveillance and observation"
+baseurl: "" # Leave empty for root deployment
+url: "" # Will be set automatically by GitHub Pages
+
+# Build settings
+# Exclude files from Jekyll processing
+exclude:
+  - README.md
+  - README_SCENE1.md
+  - SCENE1_DOCUMENTATION.md
+  - generate-placeholder-videos.html
+  - .gitignore
+  - .git
+  - node_modules
+  - package.json
+  - package-lock.json
+
+# Include specific files that start with underscore or dot
+include:
+  - .nojekyll
+
+# Disable Jekyll processing of certain directories
+# This allows ES6 modules and modern JavaScript to work
+keep_files:
+  - js
+  - scripts
+  - css
+  - videos
+
+# Markdown settings (if using markdown files)
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+
+# Sass/SCSS settings (if using)
+sass:
+  style: compressed
+
+# Permalink style
+permalink: pretty
+
+# Plugins (GitHub Pages safe plugins only)
+plugins:
+  - jekyll-relative-links
+
+# Relative links configuration
+relative_links:
+  enabled: true
+  collections: false

@@ -1,0 +1,38 @@
+# WINDOW - Git Attributes Configuration
+# Ensures proper handling of files across different operating systems
+
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Explicitly set line endings for specific file types
+*.html text eol=lf
+*.css text eol=lf
+*.js text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+
+# Binary files
+*.mp4 binary
+*.webm binary
+*.mov binary
+*.avi binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+
+# Archives
+*.zip binary
+*.tar binary
+*.gz binary
+
+# Fonts
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.otf binary
+*.eot binary

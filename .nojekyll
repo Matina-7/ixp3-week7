@@ -1,0 +1,5 @@
+# WINDOW - Interactive Narrative Experience
+# GitHub Pages Configuration (Bypass Jekyll)
+
+# This file tells GitHub Pages to bypass Jekyll processing
+# and serve the files as-is (static hosting only)
