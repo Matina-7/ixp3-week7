@@ -5,8 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WINDOW - Surveillance System</title>
     <link rel="stylesheet" href="css/style.css">
+    <!-- Typed.js for typewriter effect -->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.16"></script>
 </head>
 <body>
+    <!-- Scene 1: Loading Screen -->
+    <div id="loading-screen">
+        <div id="loading-text"></div>
+    </div>
     <!-- System Header -->
     <div id="system-header">
         <div class="system-title">SURVEILLANCE MONITORING SYSTEM v2.4</div>
@@ -17,47 +23,84 @@
         </div>
     </div>
 
-    <!-- Main Grid Container -->
-    <div id="grid-container">
+    <!-- Main Grid Container - Scene 1: 6 Feed Windows -->
+    <div id="grid-container" class="hidden">
         <!-- Camera Feed 1 -->
-        <div class="camera-feed" id="feed1">
+        <div class="feed-window" id="feed1" data-feed-id="1">
             <div class="camera-label">CAM-01 // HALLWAY</div>
             <div class="feed-content">
+                <video class="feed-video" loop muted>
+                    <source src="videos/feed1.webm" type="video/webm">
+                    <source src="videos/feed1.mp4" type="video/mp4">
+                </video>
                 <div class="static-overlay"></div>
-                <div class="camera-scene scene-1"></div>
             </div>
             <div class="timestamp" id="time1"></div>
         </div>
 
         <!-- Camera Feed 2 -->
-        <div class="camera-feed" id="feed2">
+        <div class="feed-window" id="feed2" data-feed-id="2">
             <div class="camera-label">CAM-02 // ENTRANCE</div>
             <div class="feed-content">
+                <video class="feed-video" loop muted>
+                    <source src="videos/feed2.webm" type="video/webm">
+                    <source src="videos/feed2.mp4" type="video/mp4">
+                </video>
                 <div class="static-overlay"></div>
-                <div class="camera-scene scene-2"></div>
             </div>
             <div class="timestamp" id="time2"></div>
         </div>
 
         <!-- Camera Feed 3 -->
-        <div class="camera-feed" id="feed3">
+        <div class="feed-window" id="feed3" data-feed-id="3">
             <div class="camera-label">CAM-03 // OFFICE</div>
             <div class="feed-content">
+                <video class="feed-video" loop muted>
+                    <source src="videos/feed3.webm" type="video/webm">
+                    <source src="videos/feed3.mp4" type="video/mp4">
+                </video>
                 <div class="static-overlay"></div>
-                <div class="camera-scene scene-3"></div>
             </div>
             <div class="timestamp" id="time3"></div>
         </div>
 
-        <!-- Camera Feed 4 (Will become user's camera) -->
-        <div class="camera-feed" id="feed4">
-            <div class="camera-label">CAM-04 // BACKUP</div>
+        <!-- Camera Feed 4 -->
+        <div class="feed-window" id="feed4" data-feed-id="4">
+            <div class="camera-label">CAM-04 // STAIRWELL</div>
             <div class="feed-content">
+                <video class="feed-video" loop muted>
+                    <source src="videos/feed4.webm" type="video/webm">
+                    <source src="videos/feed4.mp4" type="video/mp4">
+                </video>
                 <div class="static-overlay"></div>
-                <div class="camera-scene scene-4"></div>
-                <video id="userCamera" autoplay playsinline></video>
             </div>
             <div class="timestamp" id="time4"></div>
+        </div>
+
+        <!-- Camera Feed 5 -->
+        <div class="feed-window" id="feed5" data-feed-id="5">
+            <div class="camera-label">CAM-05 // PARKING</div>
+            <div class="feed-content">
+                <video class="feed-video" loop muted>
+                    <source src="videos/feed5.webm" type="video/webm">
+                    <source src="videos/feed5.mp4" type="video/mp4">
+                </video>
+                <div class="static-overlay"></div>
+            </div>
+            <div class="timestamp" id="time5"></div>
+        </div>
+
+        <!-- Camera Feed 6 -->
+        <div class="feed-window" id="feed6" data-feed-id="6">
+            <div class="camera-label">CAM-06 // LOBBY</div>
+            <div class="feed-content">
+                <video class="feed-video" loop muted>
+                    <source src="videos/feed6.webm" type="video/webm">
+                    <source src="videos/feed6.mp4" type="video/mp4">
+                </video>
+                <div class="static-overlay"></div>
+            </div>
+            <div class="timestamp" id="time6"></div>
         </div>
     </div>
 
@@ -88,6 +131,20 @@
         <p>But you were always the observed.</p>
     </div>
 
+    <!-- Fullscreen Feed Overlay -->
+    <div id="fullscreen-feed">
+        <div id="fullscreen-hud">
+            <div class="hud-rec">
+                <span class="rec-dot"></span>
+                <span class="rec-text">REC</span>
+            </div>
+            <div class="hud-timestamp" id="fullscreen-time"></div>
+            <div class="hud-close" onclick="scene1.closeFullscreen()">✕</div>
+        </div>
+        <video id="fullscreen-video" autoplay loop></video>
+    </div>
+
+    <script src="js/scene1.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>
