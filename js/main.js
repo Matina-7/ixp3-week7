@@ -1,7 +1,11 @@
+// Import Eye Tracker Module
+import { initEyeTracker, watchArea, stopEyeTracker, startCalibration } from '../scripts/eyeTracker.js';
+
 // Global State
 let currentStage = 0;
 let cameraActive = false;
 let invasionStarted = false;
+let eyeTrackerReady = false;
 
 // Narrative Stages
 const narrativeStages = [
@@ -84,9 +88,37 @@ const terminalMessages = [
 ];
 
 // Initialize
-function init() {
+async function init() {
     updateTime();
     setInterval(updateTime, 1000);
+
+    // Initialize Eye Tracker
+    try {
+        await initEyeTracker({ showVideoPreview: false });
+        eyeTrackerReady = true;
+        console.log("[Main] Eye Tracker ready");
+
+        // Example: Listen to the first feed window
+        const feed1 = document.querySelector('.feed-window:nth-child(1)');
+        if (feed1) {
+            watchArea('feed1', feed1, 6000, (areaId, duration) => {
+                // Create narrative overlay with special message
+                showNarrative("It's watching you back.", 4000);
+
+                // Add visual effect to the watched feed
+                feed1.style.borderColor = '#ff0000';
+                feed1.style.boxShadow = '0 0 30px rgba(255, 0, 0, 0.8)';
+
+                // Optional: Trigger alert
+                setTimeout(() => {
+                    alert("It's watching you back.");
+                }, 500);
+            });
+        }
+    } catch (error) {
+        console.error("[Main] Eye Tracker initialization failed:", error);
+        console.log("[Main] Continuing without eye tracking...");
+    }
 
     // Start narrative progression
     narrativeStages.forEach(stage => {
@@ -301,6 +333,13 @@ function generateFakeIP() {
            Math.floor(Math.random() * 255) + '.' +
            Math.floor(Math.random() * 255);
 }
+
+// Eye Tracker Control Functions (accessible from console)
+window.eyeTracker = {
+    calibrate: startCalibration,
+    stop: stopEyeTracker,
+    isReady: () => eyeTrackerReady
+};
 
 // Start on page load
 window.addEventListener('load', init);
