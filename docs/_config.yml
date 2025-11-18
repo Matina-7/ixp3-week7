@@ -1,0 +1,9 @@
+title: "Through the Window"
+description: "Interactive Narrative Horror Experience"
+theme: minima
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+exclude:
+  - node_modules
+  - README.md
