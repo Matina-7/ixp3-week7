@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Through the Window - Interactive Narrative Horror Experience</title>
+    <meta name="description" content="An interactive narrative horror experience using eye-tracking technology">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- Preload critical resources -->
+    <link rel="preload" href="assets/sounds/ambient.mp3" as="audio">
+</head>
+<body>
+    <!-- Main Container -->
+    <div id="app">
+        <!-- Loading Screen -->
+        <div id="loading-screen" class="active">
+            <div class="loading-content">
+                <img src="images/loading.gif" alt="Loading...">
+                <h2>Initializing Experience...</h2>
+                <p class="loading-text">Please allow camera access for the full experience</p>
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Calibration Screen -->
+        <div id="calibration-screen" class="hidden">
+            <div class="calibration-content">
+                <h2>Eye Tracker Calibration</h2>
+                <p>Please look at the dots as they appear and click on them</p>
+                <div id="calibration-container"></div>
+                <button id="start-experience" class="btn-primary hidden">Begin Experience</button>
+            </div>
+        </div>
+
+        <!-- Main Experience Container -->
+        <div id="experience-container" class="hidden">
+            <!-- Scene 1: The Watcher's Entrance -->
+            <div id="scene1" class="scene active">
+                <div class="scene-content"></div>
+            </div>
+
+            <!-- Scene 2 -->
+            <div id="scene2" class="scene hidden">
+                <div class="scene-content"></div>
+            </div>
+
+            <!-- Scene 3 -->
+            <div id="scene3" class="scene hidden">
+                <div class="scene-content"></div>
+            </div>
+
+            <!-- Video Feeds Container -->
+            <div id="video-feeds" class="hidden">
+                <video id="feed1" class="video-feed" muted loop></video>
+                <video id="feed2" class="video-feed" muted loop></video>
+            </div>
+
+            <!-- UI Overlay -->
+            <div id="ui-overlay">
+                <div class="gaze-indicator"></div>
+                <div class="interaction-hints"></div>
+            </div>
+        </div>
+
+        <!-- Audio -->
+        <audio id="ambient-audio" loop>
+            <source src="assets/sounds/ambient.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <!-- Eye Tracker Canvas (WebGazer) -->
+    <canvas id="webgazer-canvas" style="display: none;"></canvas>
+
+    <!-- Scripts -->
+    <script src="assets/js/webgazer.min.js"></script>
+    <script src="scripts/utils.js"></script>
+    <script src="scripts/eyeTracker.js"></script>
+    <script src="scripts/scene1.js"></script>
+    <script src="scripts/scene2.js"></script>
+    <script src="scripts/scene3.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
